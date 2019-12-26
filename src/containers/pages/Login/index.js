@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
+import { connect } from 'react-redux';
+import { loginAPI } from '../../../actions/auth';
 
 class Login extends Component {
 
@@ -10,6 +12,7 @@ class Login extends Component {
 					<h2>Halaman Login</h2>
 					<hr/>
 					<LoginForm 
+						login={this.props.login}
 					/>
 				</div>
 			</div>
@@ -18,4 +21,8 @@ class Login extends Component {
 
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+	login: (data) => dispatch(loginAPI(data))
+})
+
+export default connect(null, mapDispatchToProps)(Login);

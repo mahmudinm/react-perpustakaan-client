@@ -1,9 +1,9 @@
 import React from 'react';
-import { Formik, Form, useFormik, useField } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import {TextInput} from '../../../components/Formik/TextInput';
+import { TextInput } from '../../../components/Formik/TextInput';
 
-const LoginForm = () => {
+const LoginForm = ({ login }) => {
 	return (
 		<Formik
 			initialValues={{
@@ -17,25 +17,39 @@ const LoginForm = () => {
 				password: Yup.string()
 					.required('Required')
 			})}
-			onSubmit={(values, { setSubmitting }) => {
-				console.log(values)
+			onSubmit={(data, actions) => {
+				console.log(data)
+				login(data)
+					.then(() => {
+						// redirect to dashboard admin
+					})
+					.catch((err) => {
+						console.log('error dari submit formik', err.response)
+						actions.setFieldError("general", "Email atau Password Salah")
+					})
+					.finally(() => {
+						actions.setSubmitting(false)
+					})
 			}}
 		>
-			<Form>
-				<TextInput 
-					label="Email"
-					type="email"
-					name="email"
-					placeholder="Enter your email here"
-				/>
-				<TextInput 
-					label="Password"
-					type="password"
-					name="password"
-					placeholder="Enter your password here"
-				/>
-				<button type="submit" className="btn btn-primary btn-block">LOGIN</button>
-			</Form>	
+			{formik => (
+				<Form>
+					<TextInput 
+						label="Email"
+						type="email"
+						name="email"
+						placeholder="Enter your email here"
+					/>
+					<TextInput 
+						label="Password"
+						type="password"
+						name="password"
+						placeholder="Enter your password here"
+					/>
+					{formik.errors.general ? <div className="alert alert-danger">{formik.errors.general}</div> : null}
+					<button type="submit" className="btn btn-primary btn-block">LOGIN</button>
+				</Form>					
+			)}
 		</Formik>
 	)
 }

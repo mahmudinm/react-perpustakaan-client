@@ -9,7 +9,9 @@ const auth = (state = initialState, action = {}) => {
 	switch(action.type) {
 		case 'SET_LOGIN':
 			return {
-				...state
+				...state,
+				isAuthenticated: true,
+				user: action.value
 			}
 		default: return state;		
 	}

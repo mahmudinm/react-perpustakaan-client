@@ -24,7 +24,6 @@ const LoginForm = ({ login }) => {
 						// redirect to dashboard admin
 					})
 					.catch((err) => {
-						console.log('error dari submit formik', err.response)
 						actions.setFieldError("general", "Email atau Password Salah")
 					})
 					.finally(() => {
@@ -46,6 +45,7 @@ const LoginForm = ({ login }) => {
 						name="password"
 						placeholder="Enter your password here"
 					/>
+					{!!formik.status && <div>{formik.status}</div>}
 					{formik.errors.general ? <div className="alert alert-danger">{formik.errors.general}</div> : null}
 					<button type="submit" className="btn btn-primary btn-block">LOGIN</button>
 				</Form>					

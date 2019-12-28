@@ -8,7 +8,7 @@ class Login extends Component {
 	render() {
 		return (
 			<div className="container mt-5">
-				<div className="col-md-6 mx-auto" >	
+				<div className="col-md-5 mx-auto" >	
 					<h2>Halaman Login</h2>
 					<hr/>
 					<LoginForm 

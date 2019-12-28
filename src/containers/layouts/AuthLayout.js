@@ -1,13 +1,10 @@
 import React from 'react';
-import Login from '../pages/login';
-import { Route } from 'react-router-dom';
 
-function AuthLayout() {
-  	return (
-	    <div>
-			<Route path="/" exact component={Login} />			
-	    </div>  		
-  	);
-}
+const AuthLayout = (props) => (
+	<div>
+		<h1>Auth</h1>
+		{props.children}
+	</div>
+)
 
 export default AuthLayout

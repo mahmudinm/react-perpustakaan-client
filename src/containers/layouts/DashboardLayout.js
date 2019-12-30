@@ -1,10 +1,11 @@
 import React from 'react';
 
 const DashboardLayout = (props) => (
-	<div>
-		<h1>DashboardLayout</h1>
+	<React.Fragment>
+		<h1>Sidebar</h1>
+		<h1>Topbar</h1>
 		{props.children}
-	</div>
+	</React.Fragment>
 )
 
 export default DashboardLayout

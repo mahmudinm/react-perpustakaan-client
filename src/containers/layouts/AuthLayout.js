@@ -1,10 +1,10 @@
 import React from 'react';
 
 const AuthLayout = (props) => (
-	<div>
+	<React.Fragment>
 		<h1>Auth</h1>
 		{props.children}
-	</div>
+	</React.Fragment>
 )
 
 export default AuthLayout

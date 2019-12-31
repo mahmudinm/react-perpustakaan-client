@@ -6,9 +6,9 @@ import LayoutRoute from './components/Router/LayoutRoute'
 import AuthLayout from './containers/layouts/AuthLayout'
 import DashboardLayout from './containers/layouts/DashboardLayout'
 // Page
-import Login from './containers/pages/login'
-import Book from './containers/pages/book'
-
+import LoginPage from './containers/pages/login'
+import BookListPage from './containers/pages/book/list'
+import BookFormPage from './containers/pages/book/form'
 
 class App extends Component {
 
@@ -16,8 +16,9 @@ class App extends Component {
 		return(
 			<Router>
 				<Switch>
-					<LayoutRoute exact path="/" layout={AuthLayout} component={Login} />
-					<LayoutRoute path="/book" layout={DashboardLayout} component={Book} />
+					<LayoutRoute exact path="/" layout={AuthLayout} component={LoginPage} />
+					<LayoutRoute exact path="/book" layout={DashboardLayout} component={BookListPage} />
+					<LayoutRoute path="/book/create" layout={DashboardLayout} component={BookFormPage} />
 				</Switch>
 			</Router>			
 		)

@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import { connect } from 'react-redux';
 import { loginAPI } from '../../../actions/auth';
 
-class Login extends Component {
+class LoginPage extends Component {
 
 	render() {
 		return (
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
 	login: (data) => dispatch(loginAPI(data))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(LoginPage);

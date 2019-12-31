@@ -9,11 +9,16 @@ class Login extends Component {
 		return (
 			<div className="container mt-5">
 				<div className="col-md-5 mx-auto" >	
-					<h2>Halaman Login</h2>
-					<hr/>
-					<LoginForm 
-						login={this.props.login}
-					/>
+					<div className="card card-primary">
+						<div className="card-header">
+							<h4>Halaman Login</h4>
+						</div>
+						<div className="card-body">
+							<LoginForm 
+								login={this.props.login}
+							/>
+						</div>
+					</div>	
 				</div>
 			</div>
 		)

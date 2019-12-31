@@ -1,9 +1,12 @@
 import React from 'react';
 
+import Sidebar from '../../components/Dashboard/Sidebar';
+import Navbar from '../../components/Dashboard/Navbar';
+
 const DashboardLayout = (props) => (
 	<React.Fragment>
-		<h1>Sidebar</h1>
-		<h1>Topbar</h1>
+		<Sidebar />
+		<Navbar />
 		{props.children}
 	</React.Fragment>
 )

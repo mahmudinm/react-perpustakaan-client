@@ -7,7 +7,18 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'; 
 import rootReducer from './reducers/rootReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import App from './App';
+
+import jquery from 'jquery';
+// import $ from 'jquery';
+// coba jquery
+window.$ = window.jQuery=jquery;
+// window.jQuery = $ ;
+// window.$ = $ ;
+
+// global.jQuery = $;
+// global.$ = $;
 
 const store = createStore(
 	rootReducer,

@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput } from '../../../../components/Formik/TextInput';
+import { DatePickerInput } from '../../../../components/Formik/DatePickerInput';
 
 const BookForm = () => {
 	return (
@@ -48,7 +49,7 @@ const BookForm = () => {
 						name="penerbit"
 						placeholder="Enter your Penerbit here"
 					/>
-					<TextInput
+					<DatePickerInput
 						label="Tanggal Terbit"
 						type="tanggal_terbit"
 						name="tanggal_terbit"

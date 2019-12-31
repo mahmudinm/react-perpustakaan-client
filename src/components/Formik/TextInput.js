@@ -19,7 +19,7 @@ export const TextInput = ({ label, ...props }) => {
 				{meta.touched && meta.error ? (
 					<div className="invalid-feedback">{meta.error}</div>
 				) : null}
-				</div>	
+			</div>	
 		</>
 	)
 } 

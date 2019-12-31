@@ -10,22 +10,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import App from './App';
 
-import jquery from 'jquery';
-// import $ from 'jquery';
-// coba jquery
-window.$ = window.jQuery=jquery;
-// window.jQuery = $ ;
-// window.$ = $ ;
-
-// global.jQuery = $;
-// global.$ = $;
-
 const store = createStore(
 	rootReducer,
 	composeWithDevTools(
 		applyMiddleware(thunk)
 	)
 )
+
+if(localStorage.jwt) {
+	console.log('localStorage ada')
+	const jwt = JSON.parse(localStorage.jwt);
+	store.dispatch({type: 'SET_LOGIN', value: jwt});
+}
 
 ReactDOM.render(
 	<Provider store={store}>

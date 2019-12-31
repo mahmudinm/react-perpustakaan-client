@@ -1,6 +1,7 @@
 import React from 'react';
 import { useField, useFormikContext } from 'formik';
 import DatePicker from 'react-datepicker'
+import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePickerInput.css";
 
@@ -21,7 +22,7 @@ export const DatePickerInput = ({ label, ...props }) => {
 			        {...props}
 			        selected={(field.value && new Date(field.value))}
 			        onChange={val => {
-			        	setFieldValue(field.name, val);
+			        	setFieldValue(field.name, moment(val).format("YYYY-MM-DD"));
 			        }}
 				/>
 				{meta.touched && meta.error ? (

@@ -36,6 +36,13 @@ const BookForm = ({ storeBook }) => {
 				storeBook(data)
 					.then((res) => {
 						history.push('/book')
+					}, (err) => {
+						// Object.keys(err.response.data.error.errors).map((key) => {
+						// 	console.log(key, err.response.data.error.errors[key])
+						// 	// actions.setFieldError(key, err.response.data.error.errors[key])
+						// 	// actions.setStatus(key, err.response.data.error.errors[key])
+						// })
+						// })
 					});
 			}}
 		>

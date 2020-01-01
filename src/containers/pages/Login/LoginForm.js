@@ -2,8 +2,11 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput } from '../../../components/Formik/TextInput';
+import { useHistory } from 'react-router-dom';
 
 const LoginForm = ({ login }) => {
+	let history = useHistory();
+
 	return (
 		<Formik
 			initialValues={{
@@ -22,6 +25,7 @@ const LoginForm = ({ login }) => {
 				login(data)
 					.then(() => {
 						// redirect to dashboard admin
+						history.push('/book')
 					})
 					.catch((err) => {
 						actions.setFieldError("general", "Email atau Password Salah")
@@ -45,7 +49,6 @@ const LoginForm = ({ login }) => {
 						name="password"
 						placeholder="Enter your password here"
 					/>
-					{!!formik.status && <div>{formik.status}</div>}
 					{formik.errors.general ? <div className="alert alert-danger">{formik.errors.general}</div> : null}
 					<button type="submit" className="btn btn-primary btn-block">LOGIN</button>
 				</Form>					

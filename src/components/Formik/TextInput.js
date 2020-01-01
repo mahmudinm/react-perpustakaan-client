@@ -2,7 +2,7 @@ import React from 'react';
 import { useField } from 'formik';
 
 export const TextInput = ({ label, ...props }) => {
-	const [field, meta, status] = useField(props);
+	const [field, meta] = useField(props);
 	return (
 		<>
 			<div className="form-group">

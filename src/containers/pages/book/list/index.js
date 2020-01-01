@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getBookAPI } from '../../../../actions/book';
+import BookList from './BookList';
 
 class BookListPage extends Component {
 
@@ -14,14 +15,7 @@ class BookListPage extends Component {
 			<React.Fragment>
 				<Link to="/book/create" className="btn btn-primary">Create Book</Link>
 
-				{this.props.books.map((item, key) =>  
-					
-						<div key={key}>
-							<b>{item.name}</b> 
-							<br/>
-						</div>
-					
-				)}
+				<BookList books={this.props.books} />
 
 			</React.Fragment>
 		)

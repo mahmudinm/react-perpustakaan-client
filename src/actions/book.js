@@ -2,9 +2,10 @@ import api from '../utils/api';
 
 export const getBookAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-			api.get('book', data)
+			api.get('book')
 				.then((res) => {
 					dispatch({ type: 'GET_BOOK', value: res.data })
+					console.log(res.data);
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -12,4 +13,20 @@ export const getBookAPI = (data) => (dispatch) => {
 		})
 
 	return promise; 
-} 
+}
+
+export const storeBookAPI = (data) => (dispatch) => {
+	const promise = new Promise((resolve, reject) => {
+			api.post('book', data)
+				.then((res) => {
+					dispatch({ type: 'STORE_BOOK', value: data })
+					resolve(res)
+					console.log('this from book store');
+				}, (err) => {
+					reject(err)
+					console.log('this from book store');
+				})
+		})
+
+	return promise; 
+}

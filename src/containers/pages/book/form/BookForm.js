@@ -3,9 +3,12 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput } from '../../../../components/Formik/TextInput';
 import { DatePickerInput } from '../../../../components/Formik/DatePickerInput';
-import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
-const BookForm = () => {
+const BookForm = ({ storeBook }) => {
+	// gatau kenapa this.props.history undefined terpaksa pakai useHistory 
+	let history = useHistory();
+
 	return (
 		<Formik
 			initialValues={{
@@ -30,8 +33,10 @@ const BookForm = () => {
 					.required('Required')
 			})}
 			onSubmit={(data, actions) => {
-				// console.log(moment(data.tanggal_terbit).format("YYYY-MM-DD"));
-				console.log(data.tanggal_terbit);
+				storeBook(data)
+					.then((res) => {
+						history.push('/book')
+					});
 			}}
 		>
 			{formik => (

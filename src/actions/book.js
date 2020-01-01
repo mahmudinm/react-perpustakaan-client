@@ -30,3 +30,32 @@ export const storeBookAPI = (data) => (dispatch) => {
 
 	return promise; 
 }
+
+export const editBookAPI = (id) => (dispatch) => {
+	const promise = new Promise((resolve, reject) => {
+			api.get(`book/${id}/edit`)
+				.then((res) => {
+					dispatch({ type: 'EDIT_BOOK', value: res.data })
+					resolve(res)
+				}, (err) => {
+					reject(err)
+				})
+		})
+
+	return promise; 
+}
+
+export const updateBookAPI = (data, id) => (dispatch) => {
+	const promise = new Promise((resolve, reject) => {
+			data._method = "PUT"
+			api.post(`book/${id}`, data)
+				.then((res) => {
+					dispatch({ type: 'UPDATE_BOOK', value: res.data })
+					resolve(res)
+				}, (err) => {
+					reject(err)
+				})
+		})
+
+	return promise; 
+}

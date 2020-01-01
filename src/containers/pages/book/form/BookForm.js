@@ -5,20 +5,22 @@ import { TextInput } from '../../../../components/Formik/TextInput';
 import { DatePickerInput } from '../../../../components/Formik/DatePickerInput';
 import { useHistory } from 'react-router-dom';
 
-const BookForm = ({ storeBook }) => {
+const BookForm = ({ book, storeBook, updateBook }) => {
 	// gatau kenapa this.props.history undefined terpaksa pakai useHistory 
 	let history = useHistory();
 
+	const initialValues = {
+		name: '',
+		description: '',
+		penerbit: '',
+		tanggal_terbit: '',
+		stock: ''
+	}
+
 	return (
 		<Formik
-			initialValues={{
-				id: '',
-				name: '',
-				description: '',
-				penerbit: '',
-				tanggal_terbit: '',
-				stock: ''
-			}}
+			initialValues={book.id ? book : initialValues}
+	        enableReinitialize
 			validationSchema={Yup.object({
 				name: Yup.string()
 					.required('Required'),
@@ -33,17 +35,27 @@ const BookForm = ({ storeBook }) => {
 					.required('Required')
 			})}
 			onSubmit={(data, actions) => {
-				storeBook(data)
-					.then((res) => {
-						history.push('/book')
-					}, (err) => {
-						// Object.keys(err.response.data.error.errors).map((key) => {
-						// 	console.log(key, err.response.data.error.errors[key])
-						// 	// actions.setFieldError(key, err.response.data.error.errors[key])
-						// 	// actions.setStatus(key, err.response.data.error.errors[key])
-						// })
-						// })
-					});
+				if(!data.id) {
+					storeBook(data)
+						.then((res) => {
+							history.push('/book')
+						}, (err) => {
+							// Object.keys(err.response.data.error.errors).map((key) => {
+							// 	console.log(key, err.response.data.error.errors[key])
+							// 	// actions.setFieldError(key, err.response.data.error.errors[key])
+							// 	// actions.setStatus(key, err.response.data.error.errors[key])
+							// })
+							// })
+						});
+				} else {
+					// console.log(data.id);
+					updateBook(data, data.id)
+						.then((res) => {
+							history.push('/book')
+						}, (err) => {
+							// validasi server disini 
+						})
+				}
 			}}
 		>
 			{formik => (
@@ -79,7 +91,9 @@ const BookForm = ({ storeBook }) => {
 						name="stock"
 						placeholder="Enter your Stock here"
 					/>
-					<button type="submit" className="btn btn-primary btn-block">CREATE</button>					
+					<button type="submit" className="btn btn-primary btn-block">
+						{book ? 'UPDATE' : 'CREATE'}
+					</button>					
 				</Form>
 			)}
 		</Formik>

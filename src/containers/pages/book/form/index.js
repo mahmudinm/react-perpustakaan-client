@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import BookForm from './BookForm';
 import { connect } from 'react-redux';
-import { storeBookAPI } from '../../../../actions/book';
+import { storeBookAPI, editBookAPI, updateBookAPI } from '../../../../actions/book';
 
 class BookFormPage extends Component {
+
+	componentDidMount() {
+		const { id } = this.props.match.params;
+		if (id) {
+			this.props.editBook(id)
+		}
+	}
 
 	render() {
 		return(
 			<div className="col-md-7 mx-auto">
 				<BookForm 
 					storeBook={this.props.storeBook}
+					updateBook={this.props.updateBook}
+					book={this.props.book}
 				/>
 			</div>
 		)
@@ -17,8 +26,14 @@ class BookFormPage extends Component {
 
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	storeBook: (data) => dispatch(storeBookAPI(data))
+const mapStateToProps = (state) => ({
+	book: state.book.book
 })
 
-export default connect(null , mapDispatchToProps)(BookFormPage);
+const mapDispatchToProps = (dispatch) => ({
+	storeBook: (data) => dispatch(storeBookAPI(data)),
+	editBook: (id) => dispatch(editBookAPI(id)),
+	updateBook: (data, id) => dispatch(updateBookAPI(data, id))
+})
+
+export default connect(mapStateToProps , mapDispatchToProps)(BookFormPage);

@@ -27,6 +27,10 @@ const book = (state = initialState, action = {}) => {
 				book: [],				
 				books: state.books.map(item => item.id === book.id ? book : item ),
 			}
+		case 'DELETE_BOOK':
+			return {
+				books: state.books.filter(item => item.id !== parseInt(action.value))
+			}
 		default: return state;		
 	}
 }

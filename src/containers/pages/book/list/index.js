@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getBookAPI } from '../../../../actions/book';
+import { getBookAPI, deleteBookAPI } from '../../../../actions/book';
 import BookList from './BookList';
 
 class BookListPage extends Component {
@@ -15,7 +15,10 @@ class BookListPage extends Component {
 			<React.Fragment>
 				<Link to="/book/create" className="btn btn-primary">Create Book</Link>
 
-				<BookList books={this.props.books} />
+				<BookList 
+					books={this.props.books} 
+					deleteBook={this.props.deleteBook}
+				/>
 
 			</React.Fragment>
 		)
@@ -24,7 +27,8 @@ class BookListPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	getBook: () => dispatch(getBookAPI())
+	getBook: () => dispatch(getBookAPI()),
+	deleteBook: (id) => dispatch(deleteBookAPI(id))
 })
 
 const mapStateToProps = (state) => ({

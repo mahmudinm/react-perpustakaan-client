@@ -59,3 +59,18 @@ export const updateBookAPI = (data, id) => (dispatch) => {
 
 	return promise; 
 }
+
+export const deleteBookAPI = (id) => (dispatch) => {
+	dispatch({ type: 'DELETE_BOOK', value: id })
+
+	const promise = new Promise((resolve, reject) => {
+			api.post(`book/${id}`, { _method: 'DELETE' })
+				.then((res) => {
+					resolve(res)
+				}, (err) => {
+					reject(err)
+				})
+		})
+
+	return promise; 
+}

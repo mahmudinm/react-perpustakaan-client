@@ -2,7 +2,7 @@ import React from 'react'
 import Table from '../../../../components/ReactTable/Table'
 import { Link } from 'react-router-dom'
 
-export default function BookList({ books, onClick }) {
+export default function BookList({ books, deleteBook }) {
 	const columns = React.useMemo(
 		() => [	
 			{
@@ -27,12 +27,12 @@ export default function BookList({ books, onClick }) {
 				Cell: ({row}) => (
 					<div>
 		               <Link to={`/book/${row.original.id}/edit`} className="btn btn-sm btn-primary">Edit</Link>{' '}
-		               {/*<button onClick={() => onClick(row)} className="btn btn-sm btn-danger">Delete</button>*/}
+		               <button onClick={() => deleteBook(row.original.id)} className="btn btn-sm btn-danger">Delete</button>
 					</div>
 				)
 			}
 		],
-		[onClick]
+		[deleteBook]
 	)
 
 	return (

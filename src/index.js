@@ -17,6 +17,7 @@ const store = createStore(
 	)
 )
 
+// Dijalankan ketika ada yang mau mau merefresh site supaya SET_LOGIN tetap ada
 if(localStorage.jwt) {
 	console.log('localStorage ada')
 	const jwt = JSON.parse(localStorage.jwt);

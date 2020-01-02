@@ -11,6 +11,7 @@ import BookListPage from './containers/pages/book/list'
 import BookFormPage from './containers/pages/book/form'
 import UserListPage from './containers/pages/user/list'	
 import UserFormPage from './containers/pages/user/form'	
+import PeminjamanListPage from './containers/pages/peminjaman/list'	
 
 class App extends Component {
 
@@ -29,6 +30,9 @@ class App extends Component {
 					<LayoutRoute exact path="/user" layout={DashboardLayout} component={UserListPage} />
 					<LayoutRoute path="/user/create" layout={DashboardLayout} component={UserFormPage} />
 					<LayoutRoute path="/user/:id/edit" layout={DashboardLayout} component={UserFormPage} />
+
+					{/* User */}
+					<LayoutRoute exact path="/peminjaman" layout={DashboardLayout} component={PeminjamanListPage} />
 
 				</Switch>
 			</Router>			

@@ -17,9 +17,14 @@ class App extends Component {
 			<Router>
 				<Switch>
 					<LayoutRoute exact path="/" layout={AuthLayout} component={LoginPage} />
+
+					{/* Book */}
 					<LayoutRoute exact path="/book" layout={DashboardLayout} component={BookListPage} />
 					<LayoutRoute path="/book/create" layout={DashboardLayout} component={BookFormPage} />
 					<LayoutRoute path="/book/:id/edit" layout={DashboardLayout} component={BookFormPage} />
+
+					{/* User */}
+
 				</Switch>
 			</Router>			
 		)

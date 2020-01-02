@@ -18,4 +18,21 @@ export const loginAPI = (data) => (dispatch) => {
 		})
 
 	return promise; 
-} 
+}
+
+export const logoutAPI = () => (dispatch) => {
+	const promise = new Promise((resolve, reject) => {
+			api.post('auth/logout', null)
+				.then((res) => {
+					dispatch({ type: 'SET_LOGOUT', value: res.data })
+					localStorage.removeItem('jwt');
+					resolve(res)
+				}, (err) => {
+					reject(err)
+				})
+		})
+
+	return promise; 
+}
+
+

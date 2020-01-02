@@ -13,6 +13,12 @@ const auth = (state = initialState, action = {}) => {
 				isAuthenticated: true,
 				user: action.value
 			}
+		case 'SET_LOGOUT':
+			return {
+				...state,
+				isAuthenticated: false,
+				user: {}
+			}
 		default: return state;		
 	}
 }

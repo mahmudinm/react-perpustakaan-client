@@ -1,11 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { logoutAPI } from '../../../actions/auth';
 import './Navbar.css';
 
 const Navbar = () => {
 
   	const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  	const dispatch = useDispatch();
+  	const history = useHistory();
+
+  	const handleLogout = () => {
+		// history.push('/')
+		// dispatch({type: 'SET_LOGOUT'})
+		dispatch(logoutAPI())
+			.then((res) => {
+				history.push('/')
+			})
+  		// return dispatch => {
+  		// 		logoutAPI()
+  		// 			.then((res) => {
+  		// 			})
+  		// }
+  	}
 
   	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +51,7 @@ const Navbar = () => {
 						  		{isAuthenticated ? 'Admin' : 'Belom Login'}
 							</a>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-							  <a className="dropdown-item" href="#">Logout</a>
+							  <a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a>
 							</div>
 						</li>
 					</ul>

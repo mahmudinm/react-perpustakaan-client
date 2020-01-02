@@ -24,7 +24,7 @@ const Navbar = () => {
 							<Link className="nav-link" to="/peminjaman">Peminjaman</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/users">Users</Link>
+							<Link className="nav-link" to="/user">User</Link>
 						</li>
 					</ul>
 					<ul className="navbar-nav mr-right">

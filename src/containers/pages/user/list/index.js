@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getBookAPI, deleteBookAPI } from '../../../../actions/book';
-import BookList from './BookList';
+import { getUserAPI, deleteUserAPI } from '../../../../actions/user';
+import UserList from './UserList';
 
-class BookListPage extends Component {
+class UserListPage extends Component {
 
 	componentDidMount() {
-		this.props.getBook();
+		this.props.getUser();
 	}
 
 	render() {
 		return (
 			<React.Fragment>
-				<Link to="/book/create" className="btn btn-primary">Create Book</Link>
+				<Link to="/user/create" className="btn btn-primary">Create User</Link>
 
-				<BookList 
-					books={this.props.books} 
-					deleteBook={this.props.deleteBook}
+				<UserList 
+					users={this.props.users} 
+					deleteUser={this.props.deleteUser}
 				/>
 
 			</React.Fragment>
@@ -27,12 +27,12 @@ class BookListPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	getBook: () => dispatch(getBookAPI()),
-	deleteBook: (id) => dispatch(deleteBookAPI(id))
+	getUser: () => dispatch(getUserAPI()),
+	deleteUser: (id) => dispatch(deleteUserAPI(id))
 })
 
 const mapStateToProps = (state) => ({
-	books: state.book.books
+	users: state.user.users
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookListPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UserListPage)

@@ -34,6 +34,7 @@ const user = (state = initialState, action = {}) => {
 			}
 		case 'DELETE_USER':
 			return {
+				...state,
 				users: state.users.filter(item => item.id !== parseInt(action.value))
 			}
 		default: return state;		

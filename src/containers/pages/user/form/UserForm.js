@@ -5,40 +5,32 @@ import { TextInput } from '../../../../components/Formik/TextInput';
 import { DatePickerInput } from '../../../../components/Formik/DatePickerInput';
 import { useHistory } from 'react-router-dom';
 
-const BookForm = ({ book, storeBook, updateBook }) => {
+const UserForm = ({ user, storeUser, updateUser }) => {
 	// gatau kenapa this.props.history undefined terpaksa pakai useHistory 
 	let history = useHistory();
 
 	const initialValues = {
 		name: '',
-		description: '',
-		penerbit: '',
-		tanggal_terbit: '',
-		stock: ''
+		email: '',
+		password: '',
 	}
 
 	return (
 		<Formik
-			initialValues={book.id ? book : initialValues}
+			initialValues={user.id ? user : initialValues}
 	        enableReinitialize
 			validationSchema={Yup.object({
 				name: Yup.string()
 					.required('Required'),
-				description: Yup.string()
-					.required('Required'),
-				penerbit: Yup.string()
-					.required('Required'),
-				tanggal_terbit: Yup.string()
-					.required('Required'),
-				stock: Yup.number()
-					.integer('Must Number')
+				email: Yup.string()
+					.email('Must be an email')
 					.required('Required')
 			})}
 			onSubmit={(data, actions) => {
 				if(!data.id) {
-					storeBook(data)
+					storeUser(data)
 						.then((res) => {
-							history.push('/book')
+							history.push('/user')
 						}, (err) => {
 							// Object.keys(err.response.data.error.errors).map((key) => {
 							// 	console.log(key, err.response.data.error.errors[key])
@@ -49,9 +41,9 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 						});
 				} else {
 					// console.log(data.id);
-					updateBook(data, data.id)
+					updateUser(data, data.id)
 						.then((res) => {
-							history.push('/book')
+							history.push('/user')
 						}, (err) => {
 							// validasi server disini 
 						})
@@ -62,37 +54,18 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 				<Form>
 					<TextInput
 						label="Name"
-						type="name"
+						type="text"
 						name="name"
-						placeholder="Enter your name here"
+						placeholder="Enter your Name here"
 					/>
 					<TextInput
-						label="Description"
-						type="description"
-						name="description"
-						placeholder="Enter Description name here"
-					/>
-					<TextInput
-						label="Penerbit"
-						type="penerbit"
-						name="penerbit"
-						placeholder="Enter your Penerbit here"
-					/>
-					<DatePickerInput
-						label="Tanggal Terbit"
-						type="tanggal_terbit"
-						name="tanggal_terbit"
-						placeholderText="Enter your Tanggal Terbit here"
-						dateFormat="yyyy-MM-dd"
-					/>
-					<TextInput
-						label="Stock"
-						type="stock"
-						name="stock"
-						placeholder="Enter your Stock here"
+						label="Email"
+						type="text"
+						name="email"
+						placeholder="Enter Email here"
 					/>
 					<button type="submit" className="btn btn-primary btn-block">
-						{book ? 'UPDATE' : 'CREATE'}
+						{user.id !== null ? 'UPDATE' : 'CREATE'}
 					</button>					
 				</Form>
 			)}
@@ -100,4 +73,4 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 	)
 }
 
-export default BookForm;
+export default UserForm;

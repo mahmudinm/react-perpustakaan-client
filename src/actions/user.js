@@ -15,6 +15,10 @@ export const getUserAPI = (data) => (dispatch) => {
 	return promise; 
 }
 
+export const createUserAPI = () => (dispatch) => {
+	dispatch({type: 'CREATE_USER'});
+}
+
 export const storeUserAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 			api.post('user', data)

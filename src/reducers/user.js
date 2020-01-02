@@ -10,6 +10,11 @@ const user = (state = initialState, action = {}) => {
 				...state,
 				users: action.value
 			}
+		case 'CREATE_USER':
+			return {
+				...state,
+				user: {}
+			}
 		case 'STORE_USER':
 			return {
 				...state,

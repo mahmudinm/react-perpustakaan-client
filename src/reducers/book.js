@@ -10,6 +10,11 @@ const book = (state = initialState, action = {}) => {
 				...state,
 				books: action.value
 			}
+		case 'CREATE_BOOK':
+			return {
+				...state,
+				book: {}
+			}
 		case 'STORE_BOOK':
 			return {
 				...state,

@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import BookForm from './BookForm';
+import UserForm from './UserForm';
 import { connect } from 'react-redux';
-import { storeBookAPI, editBookAPI, updateBookAPI } from '../../../../actions/book';
+import { createUserAPI, storeUserAPI, editUserAPI, updateUserAPI } from '../../../../actions/user';
 
-class BookFormPage extends Component {
+class UserFormPage extends Component {
 
 	componentDidMount() {
 		const { id } = this.props.match.params;
 		if (id) {
-			this.props.editBook(id)
+			this.props.editUser(id)
+		} else {
+			this.props.createUser();
 		}
 	}
 
 	render() {
 		return(
 			<div className="col-md-7 mx-auto">
-				<BookForm 
-					storeBook={this.props.storeBook}
-					updateBook={this.props.updateBook}
-					book={this.props.book}
+				<h3>User Form</h3>
+				<hr/>
+				<UserForm
+					storeUser={this.props.storeUser}
+					updateUser={this.props.updateUser}
+					user={this.props.user}
 				/>
 			</div>
 		)
@@ -27,13 +31,14 @@ class BookFormPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	book: state.book.book
+	user: state.user.user
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	storeBook: (data) => dispatch(storeBookAPI(data)),
-	editBook: (id) => dispatch(editBookAPI(id)),
-	updateBook: (data, id) => dispatch(updateBookAPI(data, id))
+	createUser: () => dispatch(createUserAPI()),
+	storeUser: (data) => dispatch(storeUserAPI(data)),
+	editUser: (id) => dispatch(editUserAPI(id)),
+	updateUser: (data, id) => dispatch(updateUserAPI(data, id))
 })
 
-export default connect(mapStateToProps , mapDispatchToProps)(BookFormPage);
+export default connect(mapStateToProps , mapDispatchToProps)(UserFormPage);

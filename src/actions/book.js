@@ -15,6 +15,10 @@ export const getBookAPI = (data) => (dispatch) => {
 	return promise; 
 }
 
+export const createBookAPI = () => (dispatch) => {
+	dispatch({type: 'CREATE_BOOK'});
+}
+
 export const storeBookAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 			api.post('book', data)

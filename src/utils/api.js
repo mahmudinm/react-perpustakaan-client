@@ -17,7 +17,7 @@ api.interceptors.response.use((response) => {
 }, (error) => {
 
 	// Jika response 500 dan juga jwt tidak bisa di refresh lagi maka akan logout dan masuk ke halaman login
-	if(error.response.status === 500 && error.response.data.error.message === 'jwt has expired and can no longer be refreshed') {
+	if(error.response.status === 500 && error.response.data.error.message === 'Token has expired and can no longer be refreshed') {
 		console.log('jwt di hapus dan logout kehalaman login');
 		console.log(error.response);
 		localStorage.removeItem('jwt');
@@ -27,7 +27,8 @@ api.interceptors.response.use((response) => {
 			// history.push('/login');
 
 			console.log('redirect ke halaman login')
-			return window.location.href = '/login';
+			// redirect paka react-router-dom ga bisa ga tau kenapa 
+			return window.location.href = '/';
 			// reject(error);
 		})
 	}
@@ -35,14 +36,15 @@ api.interceptors.response.use((response) => {
 	console.log(error.response);
 
 	// refresh jwt jika error 401 dan mesage jwt has expired
-	if(error.response.status === 401 && error.response.data.error.message === 'jwt has expired') {
+	if(error.response.status === 401 && error.response.data.error.message === 'Token has expired') {
 		console.log('the jwt must be refreshed');
 		return api.post('auth/refresh', null)
 			.then((res) => {
+				console.log(res)
 				const config = error.config;			
 				localStorage.removeItem('jwt');
-				localStorage.setItem('jwt', JSON.stringify(res.data.jwt));
-				config.headers['Authorization'] = `Bearer ${res.data.jwt}`; 
+				localStorage.setItem('jwt', JSON.stringify(res.data.token));
+				config.headers['Authorization'] = `Bearer ${res.data.token}`; 
 
 				return new Promise((resolve, reject) => {
 					axios.request(config).then(response => {

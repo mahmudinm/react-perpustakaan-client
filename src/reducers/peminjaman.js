@@ -15,7 +15,9 @@ const peminjaman = (state = initialState, action = {}) => {
 		case 'CREATE_PEMINJAMAN':
 			return {
 				...state,
-				peminjaman: {}
+				peminjaman: {},
+				users: action.users,
+				books: action.books
 			}
 		case 'STORE_PEMINJAMAN':
 			return {

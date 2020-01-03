@@ -16,19 +16,29 @@ export const getPeminjamanAPI = (data) => (dispatch) => {
 }
 
 export const createPeminjamanAPI = () => (dispatch) => {
-	dispatch({type: 'CREATE_PEMINJAMAN'});
+	const promise = new Promise((resolve, reject) => {
+		api.get('peminjaman/create')
+			.then((res) => {
+				console.log(res);
+				console.log(res.data.books);
+				dispatch({type: 'CREATE_PEMINJAMAN', users: res.data[0], books: res.data[1]})
+				resolve(res)
+			}, (err) => {
+				reject(err)
+			})
+	})
 }
 
 export const storePeminjamanAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-			api.post('book', data)
+			api.post('peminjaman', data)
 				.then((res) => {
 					dispatch({ type: 'STORE_PEMINJAMAN', value: data })
 					resolve(res)
-					console.log('this from book store');
+					console.log('this from peminjaman store');
 				}, (err) => {
 					reject(err)
-					console.log('this from book store');
+					console.log('this from peminjaman store');
 				})
 		})
 
@@ -37,7 +47,7 @@ export const storePeminjamanAPI = (data) => (dispatch) => {
 
 export const editPeminjamanAPI = (id) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-			api.get(`book/${id}/edit`)
+			api.get(`peminjaman/${id}/edit`)
 				.then((res) => {
 					dispatch({ type: 'EDIT_PEMINJAMAN', value: res.data })
 					resolve(res)
@@ -52,7 +62,7 @@ export const editPeminjamanAPI = (id) => (dispatch) => {
 export const updatePeminjamanAPI = (data, id) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 			data._method = "PUT"
-			api.post(`book/${id}`, data)
+			api.post(`peminjaman/${id}`, data)
 				.then((res) => {
 					dispatch({ type: 'UPDATE_PEMINJAMAN', value: res.data })
 					resolve(res)
@@ -68,7 +78,7 @@ export const deletePeminjamanAPI = (id) => (dispatch) => {
 	dispatch({ type: 'DELETE_PEMINJAMAN', value: id })
 
 	const promise = new Promise((resolve, reject) => {
-			api.post(`book/${id}`, { _method: 'DELETE' })
+			api.post(`peminjaman/${id}`, { _method: 'DELETE' })
 				.then((res) => {
 					resolve(res)
 				}, (err) => {

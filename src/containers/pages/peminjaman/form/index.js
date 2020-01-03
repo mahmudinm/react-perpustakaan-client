@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import BookForm from './BookForm';
+import PeminjamanForm from './PeminjamanForm';
 import { connect } from 'react-redux';
-import { createBookAPI, storeBookAPI, editBookAPI, updateBookAPI } from '../../../../actions/book';
+import { createPeminjamanAPI, storePeminjamanAPI, editPeminjamanAPI, updatePeminjamanAPI } from '../../../../actions/peminjaman';
 
-class BookFormPage extends Component {
+class PeminjamanFormPage extends Component {
 
 	componentDidMount() {
 		const { id } = this.props.match.params;
 		if (id) {
-			this.props.editBook(id)
+			this.props.editPeminjaman(id)
 		} else {
-			this.props.createBook()
+			this.props.createPeminjaman()
 		}
 	}
 
 	render() {
 		return(
 			<div className="col-md-7 mx-auto">
-				<h3>Book Form</h3>
+				<h3>Peminjaman Form</h3>
 				<hr/>
-				<BookForm 
+				<PeminjamanForm 
 					storeBook={this.props.storeBook}
 					updateBook={this.props.updateBook}
-					book={this.props.book}
+					peminjaman={this.props.peminjaman}
+					users={this.props.users}
+					books={this.props.books}
 				/>
 			</div>
 		)
@@ -31,14 +33,16 @@ class BookFormPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	book: state.book.book
+	peminjaman: state.peminjaman.peminjaman,
+	users: state.peminjaman.users,
+	books: state.peminjaman.books
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	createBook: () => dispatch(createBookAPI()),
-	storeBook: (data) => dispatch(storeBookAPI(data)),
-	editBook: (id) => dispatch(editBookAPI(id)),
-	updateBook: (data, id) => dispatch(updateBookAPI(data, id))
+	createPeminjaman: () => dispatch(createPeminjamanAPI()),
+	storePeminjaman: (data) => dispatch(storePeminjamanAPI(data)),
+	editPeminjaman: (id) => dispatch(editPeminjamanAPI(id)),
+	updatePeminjaman: (data, id) => dispatch(updatePeminjamanAPI(data, id))
 })
 
-export default connect(mapStateToProps , mapDispatchToProps)(BookFormPage);
+export default connect(mapStateToProps , mapDispatchToProps)(PeminjamanFormPage);

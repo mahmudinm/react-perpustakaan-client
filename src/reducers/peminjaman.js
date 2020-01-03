@@ -27,6 +27,8 @@ const peminjaman = (state = initialState, action = {}) => {
 		case 'EDIT_PEMINJAMAN':
 			return {
 				...state,
+				users: action.users,
+				books: action.books,
 				peminjaman: action.value
 			}
 		case 'UPDATE_PEMINJAMAN':

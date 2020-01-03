@@ -31,27 +31,27 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 				// 	.required('Required')
 			})}
 			onSubmit={(data, actions) => {
-				// if(!data.id) {
-				// 	storePeminjaman(data)
-				// 		.then((res) => {
-				// 			history.push('/peminjaman')
-				// 		}, (err) => {
-				// 			// Object.keys(err.response.data.error.errors).map((key) => {
-				// 			// 	console.log(key, err.response.data.error.errors[key])
-				// 			// 	// actions.setFieldError(key, err.response.data.error.errors[key])
-				// 			// 	// actions.setStatus(key, err.response.data.error.errors[key])
-				// 			// })
-				// 			// })
-				// 		});
-				// } else {
-				// 	// console.log(data.id);
-				// 	updatePeminjaman(data, data.id)
-				// 		.then((res) => {
-				// 			history.push('/peminjaman')
-				// 		}, (err) => {
-				// 			// validasi server disini 
-				// 		})
-				// }
+				if(!data.id) {
+					storePeminjaman(data)
+						.then((res) => {
+							history.push('/peminjaman')
+						}, (err) => {
+							// Object.keys(err.response.data.error.errors).map((key) => {
+							// 	console.log(key, err.response.data.error.errors[key])
+							// 	// actions.setFieldError(key, err.response.data.error.errors[key])
+							// 	// actions.setStatus(key, err.response.data.error.errors[key])
+							// })
+							// })
+						});
+				} else {
+					// console.log(data.id);
+					updatePeminjaman(data, data.id)
+						.then((res) => {
+							history.push('/peminjaman')
+						}, (err) => {
+							// validasi server disini 
+						})
+				}
 			}}
 		>
 			{formik => (
@@ -78,15 +78,15 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 					</SelectInput>
 					<DatePickerInput
 						label="Tanggal Pinjam"
-						type="tanggal_pinjam"
-						name="tanggal_pinjam"
+						type="text"
+						name="tgl_pinjam"
 						placeholderText="Enter Tanggal Pinjam here"
 						dateFormat="yyyy-MM-dd"
 					/>			
 					<DatePickerInput
 						label="Tanggal Kembali"
-						type="tanggal_kembali"
-						name="tanggal_kembali"
+						type="text"
+						name="tgl_kembali"
 						placeholderText="Enter your Tanggal Kembali here"
 						dateFormat="yyyy-MM-dd"
 					/>							

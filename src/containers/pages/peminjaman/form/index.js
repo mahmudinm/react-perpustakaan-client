@@ -20,8 +20,8 @@ class PeminjamanFormPage extends Component {
 				<h3>Peminjaman Form</h3>
 				<hr/>
 				<PeminjamanForm 
-					storeBook={this.props.storeBook}
-					updateBook={this.props.updateBook}
+					storePeminjaman={this.props.storePeminjaman}
+					updatePeminjaman={this.props.updatePeminjaman}
 					peminjaman={this.props.peminjaman}
 					users={this.props.users}
 					books={this.props.books}

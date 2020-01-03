@@ -35,6 +35,7 @@ class App extends Component {
 					{/* User */}
 					<LayoutRoute exact path="/peminjaman" layout={DashboardLayout} component={PeminjamanListPage} />
 					<LayoutRoute path="/peminjaman/create" layout={DashboardLayout} component={PeminjamanFormPage} />
+					<LayoutRoute path="/peminjaman/:id/edit" layout={DashboardLayout} component={PeminjamanFormPage} />
 
 				</Switch>
 			</Router>			

@@ -27,6 +27,8 @@ export const createPeminjamanAPI = () => (dispatch) => {
 				reject(err)
 			})
 	})
+	
+	return promise;
 }
 
 export const storePeminjamanAPI = (data) => (dispatch) => {

@@ -49,7 +49,6 @@ export default function PeminjamanList({ peminjamans, deletePeminjaman }) {
 					var tanggal_kembali = new Date(row.original.tgl_kembali) 
 					var now = new Date();
 					var durasi = parseInt((tanggal_kembali - now) / (1000 * 60 * 60 * 24), 10); 
-					var denda = 0;
 					return (
 						<React.Fragment>
 							{durasi < 0 ?

@@ -25,10 +25,11 @@ const LoginForm = ({ login }) => {
 				login(data)
 					.then(() => {
 						// redirect to dashboard admin
-						history.push('/book')
+						history.push('/peminjaman')
 					})
 					.catch((err) => {
-						actions.setFieldError("general", "Email atau Password Salah")
+						// actions.setFieldError("general", "Email atau Password Salah")
+						actions.setStatus("Email atau Password Salah")
 					})
 					.finally(() => {
 						actions.setSubmitting(false)
@@ -49,7 +50,8 @@ const LoginForm = ({ login }) => {
 						name="password"
 						placeholder="Enter your password here"
 					/>
-					{formik.errors.general ? <div className="alert alert-danger">{formik.errors.general}</div> : null}
+					{formik.status ? <div className="alert alert-danger">{formik.status}</div> : null}
+					{/*formik.errors.general ? <div className="alert alert-danger">{formik.errors.general}</div> : null*/}
 					<button type="submit" className="btn btn-primary btn-block">LOGIN</button>
 				</Form>					
 			)}

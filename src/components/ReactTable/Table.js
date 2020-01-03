@@ -91,7 +91,6 @@ export default function Table ({ columns, data })  {
 	    prepareRow,
 	    page, // Instead of using 'rows', we'll use page,
 	    // which has only the rows for the active page
-	    rows,
 
 	    // Pagination Props
 	    // The rest of these things are super handy, too ;)

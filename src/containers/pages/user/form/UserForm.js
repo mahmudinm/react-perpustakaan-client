@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput } from '../../../../components/Formik/TextInput';
-import { DatePickerInput } from '../../../../components/Formik/DatePickerInput';
 import { useHistory } from 'react-router-dom';
 
 const UserForm = ({ user, storeUser, updateUser }) => {

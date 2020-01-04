@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput } from '../../../components/Formik/TextInput';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginForm = ({ login }) => {
 	let history = useHistory();
@@ -30,9 +31,6 @@ const LoginForm = ({ login }) => {
 					.catch((err) => {
 						// actions.setFieldError("general", "Email atau Password Salah")
 						actions.setStatus("Email atau Password Salah")
-					})
-					.finally(() => {
-						actions.setSubmitting(false)
 					})
 			}}
 		>

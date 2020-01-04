@@ -22,16 +22,16 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 			initialValues={book.id ? book : initialValues}
 	        enableReinitialize
 			validationSchema={Yup.object({
-				// name: Yup.string()
-				// 	.required('Required'),
-				// description: Yup.string()
-				// 	.required('Required'),
-				// penerbit: Yup.string()
-				// 	.required('Required'),
+				name: Yup.string()
+					.required('Required'),
+				description: Yup.string()
+					.required('Required'),
+				penerbit: Yup.string()
+					.required('Required'),
 				tanggal_terbit: Yup.date()
 					.required('Required'),
-				// stock: Yup.number()
-				// 	.required('Required')
+				stock: Yup.number()
+					.required('Required')
 			})}
 			onSubmit={(data, actions) => {
 				if(!data.id) {

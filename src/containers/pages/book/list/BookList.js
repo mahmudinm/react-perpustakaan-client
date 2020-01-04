@@ -7,7 +7,8 @@ export default function BookList({ books, deleteBook }) {
 		() => [	
 			{
 				Header: 'Name',
-				accessor: 'name'
+				accessor: 'name',
+				sortType: 'basic'
 			},
 			{
 				Header: 'Description',

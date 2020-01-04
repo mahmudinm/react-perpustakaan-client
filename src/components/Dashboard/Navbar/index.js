@@ -3,26 +3,25 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logoutAPI } from '../../../actions/auth';
+import jwt from 'jwt-decode'
 import './Navbar.css';
 
 const Navbar = () => {
 
   	const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  	// const user = useSelector(state => state.auth.user)
   	const dispatch = useDispatch();
   	const history = useHistory();
 
+  	// const decode = jwt(user);
+
+  	// console.log(decode);
+
   	const handleLogout = () => {
-		// history.push('/')
-		// dispatch({type: 'SET_LOGOUT'})
 		dispatch(logoutAPI())
 			.then((res) => {
 				history.push('/')
 			})
-  		// return dispatch => {
-  		// 		logoutAPI()
-  		// 			.then((res) => {
-  		// 			})
-  		// }
   	}
 
   	return (

@@ -11,6 +11,7 @@ export const loginAPI = (data) => (dispatch) => {
 				.then((res) => {
 					storeToken(res.data.token)
 					dispatch({ type: 'SET_LOGIN', value: res.data })
+					console.log(res);
 					resolve(res)
 				}, (err) => {
 					reject(err)

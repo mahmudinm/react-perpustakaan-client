@@ -3,6 +3,7 @@ import { useTable, useGlobalFilter, usePagination, useFilters, useSortBy  } from
 // import matchSorter from 'match-sorter'
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './Table.css';
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -140,7 +141,7 @@ export default function Table ({ columns, data })  {
 	          {headerGroups.map(headerGroup => (
 	            <tr {...headerGroup.getHeaderGroupProps()}>
 	              {headerGroup.headers.map(column => (
-	                <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{ verticalAlign: 'middle' }}>
+	                <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{ verticalAlign: 'middle', cursor: 'pointer' }}>
 	                	{column.render('Header')}
 		                <span>
 		                  &nbsp; {column.isSorted ? (column.isSortedDesc ? <FontAwesomeIcon icon={faCaretUp} /> : <FontAwesomeIcon icon={faCaretDown} /> ) : ''}

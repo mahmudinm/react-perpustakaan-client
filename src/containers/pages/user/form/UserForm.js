@@ -64,7 +64,7 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 						placeholder="Enter Email here"
 					/>
 					<button type="submit" className="btn btn-primary btn-block">
-						{user.id !== null ? 'UPDATE' : 'CREATE'}
+						{user.id ? 'UPDATE' : 'CREATE'}
 					</button>					
 				</Form>
 			)}

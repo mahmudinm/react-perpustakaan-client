@@ -16,7 +16,7 @@ class BookFormPage extends Component {
 
 	render() {
 		return(
-			<div className="col-md-7 mx-auto">
+			<div className="col-md-7 mx-auto mb-5">
 				<h3>Book Form</h3>
 				<hr/>
 				<BookForm 

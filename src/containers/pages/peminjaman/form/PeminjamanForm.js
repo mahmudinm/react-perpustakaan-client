@@ -90,7 +90,7 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 						dateFormat="yyyy-MM-dd"
 					/>							
 					<button type="submit" className="btn btn-primary btn-block">
-						{peminjaman ? 'UPDATE' : 'CREATE'}
+						{peminjaman.id ? 'UPDATE' : 'CREATE'}
 					</button>					
 				</Form>
 			)}

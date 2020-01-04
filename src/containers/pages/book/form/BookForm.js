@@ -92,7 +92,7 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 						placeholder="Enter your Stock here"
 					/>
 					<button type="submit" className="btn btn-primary btn-block">
-						{book ? 'UPDATE' : 'CREATE'}
+						{book.id ? 'UPDATE' : 'CREATE'}
 					</button>					
 				</Form>
 			)}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import LayoutRoute from './components/Router/LayoutRoute'
+import privateAuth from './utils/privateAuth';
+import guestAuth from './utils/guestAuth';
 // Layout
 // import Layout from './containers/layouts'
 import AuthLayout from './containers/layouts/AuthLayout'
@@ -20,22 +22,22 @@ class App extends Component {
 		return(
 			<Router>
 				<Switch>
-					<LayoutRoute exact path="/" layout={AuthLayout} component={LoginPage} />
+					<LayoutRoute exact path="/" layout={AuthLayout} component={guestAuth(LoginPage)} />
 
 					{/* Book */}
-					<LayoutRoute exact path="/book" layout={DashboardLayout} component={BookListPage} />
-					<LayoutRoute path="/book/create" layout={DashboardLayout} component={BookFormPage} />
-					<LayoutRoute path="/book/:id/edit" layout={DashboardLayout} component={BookFormPage} />
+					<LayoutRoute exact path="/book" layout={DashboardLayout} component={privateAuth(BookListPage)} />
+					<LayoutRoute path="/book/create" layout={DashboardLayout} component={privateAuth(BookFormPage)} />
+					<LayoutRoute path="/book/:id/edit" layout={DashboardLayout} component={privateAuth(BookFormPage)} />
 
 					{/* User */}
-					<LayoutRoute exact path="/user" layout={DashboardLayout} component={UserListPage} />
-					<LayoutRoute path="/user/create" layout={DashboardLayout} component={UserFormPage} />
-					<LayoutRoute path="/user/:id/edit" layout={DashboardLayout} component={UserFormPage} />
+					<LayoutRoute exact path="/user" layout={DashboardLayout} component={privateAuth(UserListPage)} />
+					<LayoutRoute path="/user/create" layout={DashboardLayout} component={privateAuth(UserFormPage)} />
+					<LayoutRoute path="/user/:id/edit" layout={DashboardLayout} component={privateAuth(UserFormPage)} />
 
 					{/* User */}
-					<LayoutRoute exact path="/peminjaman" layout={DashboardLayout} component={PeminjamanListPage} />
-					<LayoutRoute path="/peminjaman/create" layout={DashboardLayout} component={PeminjamanFormPage} />
-					<LayoutRoute path="/peminjaman/:id/edit" layout={DashboardLayout} component={PeminjamanFormPage} />
+					<LayoutRoute exact path="/peminjaman" layout={DashboardLayout} component={privateAuth(PeminjamanListPage)} />
+					<LayoutRoute path="/peminjaman/create" layout={DashboardLayout} component={privateAuth(PeminjamanFormPage)} />
+					<LayoutRoute path="/peminjaman/:id/edit" layout={DashboardLayout} component={privateAuth(PeminjamanFormPage)} />
 
 				</Switch>
 			</Router>			

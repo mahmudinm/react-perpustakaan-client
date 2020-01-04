@@ -22,17 +22,16 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 			initialValues={book.id ? book : initialValues}
 	        enableReinitialize
 			validationSchema={Yup.object({
-				name: Yup.string()
+				// name: Yup.string()
+				// 	.required('Required'),
+				// description: Yup.string()
+				// 	.required('Required'),
+				// penerbit: Yup.string()
+				// 	.required('Required'),
+				tanggal_terbit: Yup.date()
 					.required('Required'),
-				description: Yup.string()
-					.required('Required'),
-				penerbit: Yup.string()
-					.required('Required'),
-				tanggal_terbit: Yup.string()
-					.required('Required'),
-				stock: Yup.number()
-					.integer('Must Number')
-					.required('Required')
+				// stock: Yup.number()
+				// 	.required('Required')
 			})}
 			onSubmit={(data, actions) => {
 				if(!data.id) {
@@ -80,7 +79,6 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 					/>
 					<DatePickerInput
 						label="Tanggal Terbit"
-						type="tanggal_terbit"
 						name="tanggal_terbit"
 						placeholderText="Enter your Tanggal Terbit here"
 						dateFormat="yyyy-MM-dd"

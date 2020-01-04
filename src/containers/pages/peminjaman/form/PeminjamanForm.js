@@ -10,11 +10,10 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 	let history = useHistory();
 
 	const initialValues = {
-		name: '',
-		description: '',
-		penerbit: '',
-		tanggal_terbit: '',
-		stock: ''
+		book_id: '',
+		user_id: '',
+		tgl_pinjam: '',
+		tgl_kembali: ''
 	}
 
 	return (
@@ -24,10 +23,12 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 			validationSchema={Yup.object({
 				book_id: Yup.string()
 					.required('Required'),
-				// tanggal_pinjam: Yup.string()
-				// 	.required('Required'),
-				// tanggal_kembali: Yup.string()
-				// 	.required('Required')
+				user_id: Yup.string()
+					.required('Required'),
+				tgl_pinjam: Yup.date()
+					.required('Required'),
+				tgl_kembali: Yup.date()
+					.required('Required'),
 			})}
 			onSubmit={(data, actions) => {
 				if(!data.id) {
@@ -57,7 +58,6 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 				<Form>
 					<SelectInput
 						label="Book"
-						type="text"
 						name="book_id"
 					>
 						<option value="">select your book</option>
@@ -67,7 +67,6 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 					</SelectInput>
 					<SelectInput
 						label="User"
-						type="text"
 						name="user_id"
 					>
 						<option value="">Users</option>
@@ -76,19 +75,17 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 						)}
 					</SelectInput>
 					<DatePickerInput
-						label="Tanggal Pinjam"
-						type="text"
+						label="Tanggal Terbit"
 						name="tgl_pinjam"
-						placeholderText="Enter Tanggal Pinjam here"
+						placeholderText="Enter your Tanggal Terbit here"
 						dateFormat="yyyy-MM-dd"
-					/>			
+					/>		
 					<DatePickerInput
-						label="Tanggal Kembali"
-						type="text"
+						label="Tanggal Terbit"
 						name="tgl_kembali"
-						placeholderText="Enter your Tanggal Kembali here"
+						placeholderText="Enter your Tanggal Terbit here"
 						dateFormat="yyyy-MM-dd"
-					/>							
+					/>					
 					<button type="submit" className="btn btn-primary btn-block">
 						{peminjaman.id ? 'UPDATE' : 'CREATE'}
 					</button>					

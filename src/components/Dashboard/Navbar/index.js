@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -9,11 +9,15 @@ import './Navbar.css';
 const Navbar = () => {
 
   	const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-  	const user = useSelector(state => state.auth.user)
+  	const token = useSelector(state => state.auth.token)
   	const dispatch = useDispatch();
   	const history = useHistory();
 
-  	const jwtDecode = jwt(user);
+  	// Set untuk jwtDecode dan cek bilan token ada atau tidak
+  	let jwtDecode 
+  	if (Object.entries(token).length !== 0) {
+	  	jwtDecode = jwt(token)
+  	}
 
   	const handleLogout = () => {
 		dispatch(logoutAPI())

@@ -1,7 +1,7 @@
 const initialState = {
 	isAuthenticated: false,
 	loading: false,
-	user: {},
+	token: {},
 	message: ''
 }
 
@@ -11,13 +11,13 @@ const auth = (state = initialState, action = {}) => {
 			return {
 				...state,
 				isAuthenticated: true,
-				user: action.value
+				token: action.value
 			}
 		case 'SET_LOGOUT':
 			return {
 				...state,
 				isAuthenticated: false,
-				user: {}
+				token: {}
 			}
 		default: return state;		
 	}

@@ -10,7 +10,7 @@ export const loginAPI = (data) => (dispatch) => {
 			api.post('auth/login', data)
 				.then((res) => {
 					storeToken(res.data.token)
-					dispatch({ type: 'SET_LOGIN', value: res.data })
+					dispatch({ type: 'SET_LOGIN', value: res.data.token })
 					console.log(res);
 					resolve(res)
 				}, (err) => {

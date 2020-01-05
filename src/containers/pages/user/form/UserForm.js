@@ -11,7 +11,6 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 	const initialValues = {
 		name: '',
 		email: '',
-		password: '',
 	}
 
 	return (
@@ -31,12 +30,10 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 						.then((res) => {
 							history.push('/user')
 						}, (err) => {
-							// Object.keys(err.response.data.error.errors).map((key) => {
-							// 	console.log(key, err.response.data.error.errors[key])
-							// 	// actions.setFieldError(key, err.response.data.error.errors[key])
-							// 	// actions.setStatus(key, err.response.data.error.errors[key])
-							// })
-							// })
+							Object.keys(err.response.data.error.errors).map((key) => {
+								// actions.setErrors( {['name']: 'error'})
+								actions.setFieldError(key, err.response.data.error.errors[key])
+							})
 						});
 				} else {
 					// console.log(data.id);
@@ -44,7 +41,10 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 						.then((res) => {
 							history.push('/user')
 						}, (err) => {
-							// validasi server disini 
+							Object.keys(err.response.data.error.errors).map((key) => {
+								// actions.setErrors( {['name']: 'error'})
+								actions.setFieldError(key, err.response.data.error.errors[key])
+							})
 						})
 				}
 			}}

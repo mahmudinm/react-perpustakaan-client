@@ -39,12 +39,10 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 						.then((res) => {
 							history.push('/book')
 						}, (err) => {
-							// Object.keys(err.response.data.error.errors).map((key) => {
-							// 	console.log(key, err.response.data.error.errors[key])
-							// 	// actions.setFieldError(key, err.response.data.error.errors[key])
-							// 	// actions.setStatus(key, err.response.data.error.errors[key])
-							// })
-							// })
+							Object.keys(err.response.data.error.errors).map((key) => {
+								// actions.setErrors( {['name']: 'error'})
+								actions.setFieldError(key, err.response.data.error.errors[key])
+							})
 						});
 				} else {
 					// console.log(data.id);
@@ -53,6 +51,10 @@ const BookForm = ({ book, storeBook, updateBook }) => {
 							history.push('/book')
 						}, (err) => {
 							// validasi server disini 
+							Object.keys(err.response.data.error.errors).map((key) => {
+								// actions.setErrors( {['name']: 'error'})
+								actions.setFieldError(key, err.response.data.error.errors[key])
+							})							
 						})
 				}
 			}}

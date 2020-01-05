@@ -9,13 +9,11 @@ import './Navbar.css';
 const Navbar = () => {
 
   	const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-  	// const user = useSelector(state => state.auth.user)
+  	const user = useSelector(state => state.auth.user)
   	const dispatch = useDispatch();
   	const history = useHistory();
 
-  	// const decode = jwt(user);
-
-  	// console.log(decode);
+  	const jwtDecode = jwt(user);
 
   	const handleLogout = () => {
 		dispatch(logoutAPI())
@@ -47,7 +45,7 @@ const Navbar = () => {
 					<ul className="navbar-nav mr-right">
 						<li className="nav-item dropdown">
 							<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						  		{isAuthenticated ? 'Admin' : 'Belom Login'}
+						  		{isAuthenticated ? jwtDecode.name : 'Belom Login'}
 							</a>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
 							  <a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a>

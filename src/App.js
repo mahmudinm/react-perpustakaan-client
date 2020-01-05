@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LayoutRoute from './components/Router/LayoutRoute'
 import privateAuth from './utils/privateAuth';
 import guestAuth from './utils/guestAuth';
@@ -8,6 +8,7 @@ import guestAuth from './utils/guestAuth';
 import AuthLayout from './containers/layouts/AuthLayout'
 import DashboardLayout from './containers/layouts/DashboardLayout'
 // Page
+import NotFound from './containers/pages/notfound'
 import LoginPage from './containers/pages/login'
 import BookListPage from './containers/pages/book/list'
 import BookFormPage from './containers/pages/book/form'
@@ -22,6 +23,7 @@ class App extends Component {
 		return(
 			<Router>
 				<Switch>
+
 					<LayoutRoute exact path="/" layout={AuthLayout} component={guestAuth(LoginPage)} />
 
 					{/* Book */}
@@ -38,6 +40,9 @@ class App extends Component {
 					<LayoutRoute exact path="/peminjaman" layout={DashboardLayout} component={privateAuth(PeminjamanListPage)} />
 					<LayoutRoute path="/peminjaman/create" layout={DashboardLayout} component={privateAuth(PeminjamanFormPage)} />
 					<LayoutRoute path="/peminjaman/:id/edit" layout={DashboardLayout} component={privateAuth(PeminjamanFormPage)} />
+
+					{/*Not Found*/}
+					<Route component={NotFound} />					
 
 				</Switch>
 			</Router>			

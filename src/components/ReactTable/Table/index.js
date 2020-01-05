@@ -58,25 +58,25 @@ function DefaultColumnFilter({
 
 export default function Table ({ columns, data })  {
 
-	const filterTypes = React.useMemo(
-	    () => ({
-	      // Add a new fuzzyTextFilterFn filter type.
-	      // fuzzyText: fuzzyTextFilterFn,
-	      // Or, override the default text filter to use
-	      // "startWith"
-	      text: (rows, id, filterValue) => {
-	        return rows.filter(row => {
-	          const rowValue = row.values[id]
-	          return rowValue !== undefined
-	            ? String(rowValue)
-	                .toLowerCase()
-	                .startsWith(String(filterValue).toLowerCase())
-	            : true
-	        })
-	      },
-	    }),
-	    []
-	)
+	// const filterTypes = React.useMemo(
+	//     () => ({
+	//       // Add a new fuzzyTextFilterFn filter type.
+	//       // fuzzyText: fuzzyTextFilterFn,
+	//       // Or, override the default text filter to use
+	//       // "startWith"
+	//       text: (rows, id, filterValue) => {
+	//         return rows.filter(row => {
+	//           const rowValue = row.values[id]
+	//           return rowValue !== undefined
+	//             ? String(rowValue)
+	//                 .toLowerCase()
+	//                 .startsWith(String(filterValue).toLowerCase())
+	//             : true
+	//         })
+	//       },
+	//     }),
+	//     []
+	// )
 
 
 	const defaultColumn = React.useMemo(

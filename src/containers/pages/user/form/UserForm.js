@@ -31,7 +31,6 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 							history.push('/user')
 						}, (err) => {
 							Object.keys(err.response.data.error.errors).map((key) => {
-								// actions.setErrors( {['name']: 'error'})
 								actions.setFieldError(key, err.response.data.error.errors[key])
 							})
 						});
@@ -42,7 +41,6 @@ const UserForm = ({ user, storeUser, updateUser }) => {
 							history.push('/user')
 						}, (err) => {
 							Object.keys(err.response.data.error.errors).map((key) => {
-								// actions.setErrors( {['name']: 'error'})
 								actions.setFieldError(key, err.response.data.error.errors[key])
 							})
 						})

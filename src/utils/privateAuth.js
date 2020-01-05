@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 export default function privateAuth (ComposedComponent) {
 
-	const jwt = localStorage.getItem('jwt');
-
 	class Authentication extends Component {
 
 		componentDidMount() {

@@ -24,11 +24,11 @@ export const storeBookAPI = (data) => (dispatch) => {
 			api.post('book', data)
 				.then((res) => {
 					dispatch({ type: 'STORE_BOOK', value: data })
+					dispatch({ type: 'SHOW_TOAST', message: 'Book has been created' })					
+
 					resolve(res)
-					console.log('this from book store');
 				}, (err) => {
 					reject(err)
-					console.log('this from book store');
 				})
 		})
 
@@ -39,7 +39,8 @@ export const editBookAPI = (id) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 			api.get(`book/${id}/edit`)
 				.then((res) => {
-					dispatch({ type: 'EDIT_BOOK', value: res.data })
+					dispatch({ type: 'EDIT_BOOK', value: res.data })					
+
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -55,6 +56,8 @@ export const updateBookAPI = (data, id) => (dispatch) => {
 			api.post(`book/${id}`, data)
 				.then((res) => {
 					dispatch({ type: 'UPDATE_BOOK', value: res.data })
+					dispatch({ type: 'SHOW_TOAST', message: 'Book has been updated' })
+					
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -66,6 +69,7 @@ export const updateBookAPI = (data, id) => (dispatch) => {
 
 export const deleteBookAPI = (id) => (dispatch) => {
 	dispatch({ type: 'DELETE_BOOK', value: id })
+	dispatch({ type: 'SHOW_TOAST', message: 'Book has been delete' })
 
 	const promise = new Promise((resolve, reject) => {
 			api.post(`book/${id}`, { _method: 'DELETE' })

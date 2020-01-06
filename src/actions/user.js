@@ -5,7 +5,6 @@ export const getUserAPI = (data) => (dispatch) => {
 			api.get('user')
 				.then((res) => {
 					dispatch({ type: 'GET_USER', value: res.data })
-					console.log(res.data);
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -24,11 +23,11 @@ export const storeUserAPI = (data) => (dispatch) => {
 			api.post('user', data)
 				.then((res) => {
 					dispatch({ type: 'STORE_USER', value: data })
+					dispatch({ type: 'SHOW_TOAST', message: 'User has been created' })
+
 					resolve(res)
-					console.log('this from user store');
 				}, (err) => {
 					reject(err)
-					console.log('this from user store');
 				})
 		})
 
@@ -40,6 +39,7 @@ export const editUserAPI = (id) => (dispatch) => {
 			api.get(`user/${id}/edit`)
 				.then((res) => {
 					dispatch({ type: 'EDIT_USER', value: res.data })
+
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -55,6 +55,8 @@ export const updateUserAPI = (data, id) => (dispatch) => {
 			api.post(`user/${id}`, data)
 				.then((res) => {
 					dispatch({ type: 'UPDATE_USER', value: res.data })
+					dispatch({ type: 'SHOW_TOAST', message: 'User has been updated' })
+
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -66,6 +68,7 @@ export const updateUserAPI = (data, id) => (dispatch) => {
 
 export const deleteUserAPI = (id) => (dispatch) => {
 	dispatch({ type: 'DELETE_USER', value: id })
+	dispatch({ type: 'SHOW_TOAST', message: 'User has been delete' })
 
 	const promise = new Promise((resolve, reject) => {
 			api.post(`user/${id}`, { _method: 'DELETE' })

@@ -36,11 +36,11 @@ export const storePeminjamanAPI = (data) => (dispatch) => {
 			api.post('peminjaman', data)
 				.then((res) => {
 					dispatch({ type: 'STORE_PEMINJAMAN', value: data })
+					dispatch({ type: 'SHOW_TOAST', message: 'Data has been created' })
+
 					resolve(res)
-					console.log('this from peminjaman store');
 				}, (err) => {
 					reject(err)
-					console.log('this from peminjaman store');
 				})
 		})
 
@@ -52,7 +52,7 @@ export const editPeminjamanAPI = (id) => (dispatch) => {
 			api.get(`peminjaman/${id}/edit`)
 				.then((res) => {
 					dispatch({ type: 'EDIT_PEMINJAMAN', value: res.data[0], users: res.data[1], books: res.data[2] })
-					console.log(res);
+
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -68,6 +68,8 @@ export const updatePeminjamanAPI = (data, id) => (dispatch) => {
 			api.post(`peminjaman/${id}`, data)
 				.then((res) => {
 					dispatch({ type: 'UPDATE_PEMINJAMAN', value: res.data })
+				    dispatch({ type: 'SHOW_TOAST', message: 'Data has been updated' })
+
 					resolve(res)
 				}, (err) => {
 					reject(err)
@@ -79,6 +81,7 @@ export const updatePeminjamanAPI = (data, id) => (dispatch) => {
 
 export const deletePeminjamanAPI = (id) => (dispatch) => {
 	dispatch({ type: 'DELETE_PEMINJAMAN', value: id })
+	dispatch({ type: 'SHOW_TOAST', message: 'Data has been delete' })
 
 	const promise = new Promise((resolve, reject) => {
 			api.post(`peminjaman/${id}`, { _method: 'DELETE' })

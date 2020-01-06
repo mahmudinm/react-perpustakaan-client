@@ -1,7 +1,6 @@
 const initialState = {
 	book: {},
-	books: [],
-	message: ''
+	books: []
 }
 
 const book = (state = initialState, action = {}) => {

@@ -77,15 +77,15 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 						)}
 					</SelectInput>
 					<DatePickerInput
-						label="Tanggal Terbit"
+						label="Tanggal Pinjam"
 						name="tgl_pinjam"
-						placeholderText="Enter your Tanggal Terbit here"
+						placeholderText="Enter your Tanggal Pinjam here"
 						dateFormat="yyyy-MM-dd"
 					/>		
 					<DatePickerInput
-						label="Tanggal Terbit"
+						label="Tanggal Kembali"
 						name="tgl_kembali"
-						placeholderText="Enter your Tanggal Terbit here"
+						placeholderText="Enter your Tanggal Kembali here"
 						dateFormat="yyyy-MM-dd"
 					/>					
 					<button type="submit" className="btn btn-primary btn-block">

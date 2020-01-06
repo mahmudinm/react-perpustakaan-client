@@ -1,6 +1,7 @@
 const initialState = {
 	book: {},
-	books: []
+	books: [],
+	message: ''
 }
 
 const book = (state = initialState, action = {}) => {
@@ -13,7 +14,8 @@ const book = (state = initialState, action = {}) => {
 		case 'CREATE_BOOK':
 			return {
 				...state,
-				book: {}
+				book: {},
+				message: 'Berhasil tambah data'
 			}
 		case 'STORE_BOOK':
 			return {

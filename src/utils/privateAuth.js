@@ -8,8 +8,6 @@ export default function privateAuth (ComposedComponent) {
 		componentDidMount() {
 			if (!this.props.isAuthenticated) {
 				this.props.history.push('/')
-				console.log(!this.props.isAuthenticated)
-				console.log(this.props.isAuthenticated)
 			} 
 		}
 

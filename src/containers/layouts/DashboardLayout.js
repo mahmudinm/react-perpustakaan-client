@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 import { closeToast } from '../../actions/toast';
 import Navbar from '../../components/Dashboard/Navbar';
 
@@ -12,6 +13,17 @@ const DashboardLayout = (props) => {
 	const handleToast = () => {
 		dispatch(closeToast())
 	}
+
+	useEffect(() => {
+		// masih blom bisa toast nya masih muncul di halaman lain
+		if (message === null) {
+			props.history.listen((location, action) => {
+				dispatch(closeToast());
+			})
+		}
+
+	}, [])
+
 
 	return (
 		<React.Fragment>
@@ -35,4 +47,4 @@ const DashboardLayout = (props) => {
 	)
 }
 
-export default DashboardLayout
+export default withRouter(DashboardLayout)

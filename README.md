@@ -31,6 +31,6 @@
 - bootstrap
 
 ## Screenshot
-- ![Halaman login](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_login.png)
-- ![Halaman Index Pinjam](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_index_pinjam.png)
-- ![Halaman Form Pinjam](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_create_pinjam.png)
+![Halaman login](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_login.png)
+![Halaman Index Pinjam](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_index_pinjam.png)
+![Halaman Form Pinjam](https://github.com/mahmudinm/laravel-react-perpustakaan-client/raw/master/screenshot/halaman_create_pinjam.png)

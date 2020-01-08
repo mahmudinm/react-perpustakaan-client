@@ -26,7 +26,7 @@ export const logoutAPI = () => (dispatch) => {
 			api.post('auth/logout', null)
 				.then((res) => {
 					dispatch({ type: 'SET_LOGOUT', value: res.data })
-					// localStorage.removeItem('jwt');
+					localStorage.removeItem('jwt');
 					resolve(res)
 				}, (err) => {
 					reject(err)

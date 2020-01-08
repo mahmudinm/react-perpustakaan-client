@@ -9,7 +9,7 @@ import AuthLayout from './containers/layouts/AuthLayout'
 import DashboardLayout from './containers/layouts/DashboardLayout'
 // Page
 import NotFound from './containers/pages/notfound'
-import LoginPage from './containers/pages/login'
+import LoginPage from './containers/pages/signin'
 import BookListPage from './containers/pages/book/list'
 import BookFormPage from './containers/pages/book/form'
 import UserListPage from './containers/pages/user/list'	

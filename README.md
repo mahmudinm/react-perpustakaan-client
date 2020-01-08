@@ -4,8 +4,8 @@
 - Email : admin@email.com | Password : password
 
 ## Installing API
-- git clone atau download 
 - Download API [Laravel React Perpustakaan API](https://github.com/mahmudinm/laravel-react-perpustakaan-api)
+- git clone atau download 
 - composer install / composer update
 - duplicate .env.example to .env
 - import database.sql
@@ -14,6 +14,7 @@
 - php artisan jwt:generate
 
 ## Installing Client
+- git clone atau download 
 - yarn install / npm install
 - yarn start / npm start
 

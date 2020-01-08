@@ -22,7 +22,7 @@ const Navbar = () => {
   	const handleLogout = () => {
 		dispatch(logoutAPI())
 			.then((res) => {
-				history.push('/')
+				// history.push('/')
 			})
   	}
 

@@ -17,7 +17,7 @@ api.interceptors.response.use((response) => {
 }, (error) => {
 
 	// Jika response 500 dan juga jwt tidak bisa di refresh lagi maka akan logout dan masuk ke halaman login
-	if(error.response.status === 500 && error.response.data.error.message === 'Token has expired and can no longer be refreshed') {
+	if(error.response.status === 501 && error.response.data.error.message === 'Token has expired and can no longer be refreshed' ) {
 		console.log('jwt di hapus dan logout kehalaman login');
 		console.log(error.response);
 		localStorage.removeItem('jwt');
@@ -31,6 +31,20 @@ api.interceptors.response.use((response) => {
 			return window.location.href = '/';
 			// reject(error);
 		})
+	} else if ( error.response.status === 500 && error.response.data.error.message === 'The token has been blacklisted' ) {
+		console.log('jwt di hapus dan logout kehalaman login');
+		console.log(error.response);
+		localStorage.removeItem('jwt');
+
+		return new Promise((resolve, reject) => {
+			// history nya belom bisa ngepush ke halaman cuma linknya doang terupdate
+			// history.push('/login');
+
+			console.log('redirect ke halaman login')
+			// redirect paka react-router-dom ga bisa ga tau kenapa 
+			return window.location.href = '/';
+			// reject(error);
+		})		
 	}
 
 	console.log(error.response);

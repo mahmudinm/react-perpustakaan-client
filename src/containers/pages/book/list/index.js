@@ -11,6 +11,8 @@ class BookListPage extends Component {
 	}
 
 	render() {
+
+
 		return (
 			<React.Fragment>
 				<Link to="/book/create" className="btn btn-primary">Create Book</Link>
@@ -18,7 +20,7 @@ class BookListPage extends Component {
 				<BookList 
 					books={this.props.books} 
 					deleteBook={this.props.deleteBook}
-				/>
+				/> 
 
 			</React.Fragment>
 		)

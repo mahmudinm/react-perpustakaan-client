@@ -62,7 +62,7 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 						label="Book"
 						name="book_id"
 					>
-						<option value="">select your book</option>
+						<option value="">---- Pilih Buku ----</option>
 						{books.map((item, key) => 
 							<option value={item.id} key={key}>{item.name}</option>
 						)}
@@ -71,7 +71,7 @@ const PeminjamanForm = ({ peminjaman, users, books, storePeminjaman, updatePemin
 						label="User"
 						name="user_id"
 					>
-						<option value="">Users</option>
+						<option value="">---- Pilih Users ----</option>
 						{users.map((item, key) => 
 							<option value={item.id} key={key}>{item.name}</option>
 						)}

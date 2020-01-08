@@ -11,6 +11,7 @@ class PeminjamanListPage extends Component {
 	}
 
 	render() {
+
 		return (
 			<React.Fragment>
 				<Link to="/peminjaman/create" className="btn btn-primary">Create Peminjaman</Link>
@@ -18,7 +19,7 @@ class PeminjamanListPage extends Component {
 				<PeminjamanList 
 					peminjamans={this.props.peminjamans} 
 					deletePeminjaman={this.props.deletePeminjaman}
-				/>
+				/> 
 
 			</React.Fragment>
 		)

@@ -9,9 +9,11 @@
 - composer install / composer update
 - duplicate .env.example to .env
 - import database.sql
-- change your config database
+- change your config database 
+- config database pada file .env
 - php artisan key:generate
-- php artisan jwt:generate
+- php artisan jwt:secret
+- php artisan serve
 
 ## Installing Client
 - git clone atau download 
